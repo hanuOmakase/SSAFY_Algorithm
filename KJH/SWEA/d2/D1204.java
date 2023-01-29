@@ -15,7 +15,7 @@ public class D1204 {
                 temp = sc.nextInt();
                 arr[temp] += 1;
                 if(arr[temp] > num){answer = temp; num = arr[temp];}
-                else-if(arr[temp] == num && temp > answer){answer = temp; num=arr[temp];}
+                else{if(arr[temp] == num && temp > answer){answer = temp; num=arr[temp];}}
             }
             System.out.printf("#%d %d\n", tc, answer);
         }
