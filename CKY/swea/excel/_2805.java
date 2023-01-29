@@ -29,8 +29,8 @@ public class _2805 {
 	}
 
 	public static void bfs(int start) {
-		Queue<Node> q = new LinkedList<>();
-		q.offer(new Node(start, start));
+		Queue<Node2805> q = new LinkedList<>();
+		q.offer(new Node2805(start, start));
 		sum += arr[start][start];
 		arr[start][start] = -1;
 
@@ -38,7 +38,7 @@ public class _2805 {
 		int[] yRange = { 0, 0, 1, -1 };
 
 		while (!q.isEmpty()) {
-			Node n = q.poll();
+			Node2805 n = q.poll();
 
 			int x = n.x;
 			int y = n.y;
@@ -55,16 +55,16 @@ public class _2805 {
 
 				sum += arr[x1][y1];
 				arr[x1][y1] = -1;
-				q.offer(new Node(x1, y1));
+				q.offer(new Node2805(x1, y1));
 			}
 		}
 	}
 }
 
-class Node {
+class Node2805 {
 	int x, y;
 
-	public Node(int x, int y) {
+	public Node2805(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
