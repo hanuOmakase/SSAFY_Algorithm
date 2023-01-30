@@ -1,34 +1,36 @@
 package CKY.boj.excel;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.io.*;
 
 public class _10158 {
-    public static void main(String[] args) throws Exception{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int w = Integer.parseInt(st.nextToken());
-        int h = Integer.parseInt(st.nextToken());
-
-        st = new StringTokenizer(br.readLine());
-        int aw = Integer.parseInt(st.nextToken());
-        int ah = Integer.parseInt(st.nextToken());
-        int time = Integer.parseInt(br.readLine());
-        // 윗벽에 맞으면 x 감소, 아랫벽에 맞으면 x 증가
-        // 오른쪽벽에 맞으면 y 감소, 왼쪽벽에 맞으면 y 증가
-        // 튕기는 벽을 간단히 알 수 없을까
-        boolean xInc = true;
-        boolean yInc = true;
-
-        while(time != 0){
-            int xIncValue = w - aw;
-            int yIncValue = h - ah;
-            int xDecValue = aw;
-            int yDecValue = ah;
-
-        }
-
-        System.out.println(aw + " " + ah);
-    }
+	public static void main(String[] args) throws Exception{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out)); 
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int xSize = Integer.parseInt(st.nextToken()); 
+		int ySize = Integer.parseInt(st.nextToken());
+		
+		st = new StringTokenizer(br.readLine());
+		
+		int ax = Integer.parseInt(st.nextToken()); 
+		int ay = Integer.parseInt(st.nextToken());
+		int time = Integer.parseInt(br.readLine());
+			
+		int xAnswer = 0;
+		int yAnswer = 0;
+		
+		if((ax + time) / xSize % 2 == 1) 
+			xAnswer = xSize - (ax + time) % xSize;
+		else
+			xAnswer = (ax + time) % xSize;
+		if((ay + time) / ySize % 2 == 1) 
+			yAnswer = ySize - (ay + time) % ySize;
+		else
+			yAnswer = (ay + time) % ySize;
+		
+		bw.write(xAnswer + " " + yAnswer);  
+		bw.flush();   
+		bw.close();   
+	}
 }
