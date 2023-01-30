@@ -3,8 +3,7 @@ package boj;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class _1261_G4 {
@@ -27,22 +26,23 @@ public class _1261_G4 {
 		}
 
 		// start
-		Queue<Node> q = new LinkedList<>();
-		int[][] visited = new int[N][M];
+		PriorityQueue<Node> pq = new PriorityQueue<>((a, b) -> {
+			return a.wall - b.wall;
+		});
+		pq.add(new Node(0, 0, 0));
+		int[][] dist = new int[N][M];
 		for (int i = 0; i < N; i++)
-			Arrays.fill(visited[i], -1);
-		q.add(new Node(0, 0, 0));
-		visited[0][0] = 0;
+			Arrays.fill(dist[i], Integer.MAX_VALUE);
 
-		int answer = Integer.MAX_VALUE;
-		while (!q.isEmpty()) {
-			Node cur = q.poll();
-//			System.out.println(cur);
-			if(cur.x == N-1 && cur.y == M-1) {
-				answer = Math.min(cur.wall, answer);
+		dist[0][0] = 0;
+
+		while (!pq.isEmpty()) {
+			Node cur = pq.poll();
+
+			if (dist[cur.x][cur.y] < cur.wall)
 				continue;
-			}
-			
+
+			// 진행
 			for (int[] d : dir) {
 				int nx = cur.x + d[0];
 				int ny = cur.y + d[1];
@@ -50,19 +50,20 @@ public class _1261_G4 {
 				if (nx < 0 || nx >= N || ny < 0 || ny >= M)
 					continue;
 
-				if ( (visited[nx][ny]==-1 || visited[nx][ny] > cur.wall) && map[nx][ny] == 0) {
-					visited[nx][ny] = cur.wall;
-					q.add(new Node(nx, ny, cur.wall));
+				if (map[nx][ny] == 0 && dist[nx][ny] > cur.wall) {
+					dist[nx][ny] = cur.wall;
+					pq.add(new Node(nx, ny, cur.wall));
 				}
 
-				if ( (visited[nx][ny] == -1 || visited[nx][ny] > cur.wall + 1) && map[nx][ny] == 1) {
-					visited[nx][ny] = cur.wall + 1;
-					q.add(new Node(nx, ny, cur.wall + 1));
+				if (map[nx][ny] == 1 && dist[nx][ny] > cur.wall + 1) {
+					dist[nx][ny] = cur.wall + 1;
+					pq.add(new Node(nx, ny, cur.wall + 1));
 				}
 			}
-
 		}
-		System.out.println(answer);
+
+		// min Value 출력
+		System.out.println(dist[N-1][M-1]);
 	}
 
 	static class Node {
@@ -79,7 +80,6 @@ public class _1261_G4 {
 		public String toString() {
 			return "Node [x=" + x + ", y=" + y + ", wall=" + wall + "]";
 		}
-		
-		
+
 	}
 }
