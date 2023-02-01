@@ -5,7 +5,7 @@ import java.io.*;
 public class _1205 {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		br.readLine();
+		int size = Integer.parseInt(br.readLine());
 		Set<Integer> s = new HashSet<>();
 		StringTokenizer st = new StringTokenizer(br.readLine().trim());
 		
@@ -16,9 +16,9 @@ public class _1205 {
 				jokerCount++;
 				continue;
 			}
-				
 			s.add(number);
 		}
+
 		List<Integer> list = new ArrayList<>(s);
 		Collections.sort(list);
 		
@@ -39,7 +39,11 @@ public class _1205 {
 			len += useJoker;
 			maxLen = Math.max(maxLen, len);
 		}
-		System.out.println(maxLen);
+		
+		if(size == jokerCount) {
+			System.out.println(size);
+		}else {
+			System.out.println(maxLen);
+		}
 	}
 }
-
