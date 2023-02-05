@@ -1,6 +1,5 @@
 package CKY.boj.solution;
 
-<<<<<<< HEAD
 import java.util.*;
 import java.io.*;
 
@@ -107,9 +106,4 @@ class NodeXY {
 	public String toString() {
 		return x + " " + y;
 	}
-	
-=======
-public class _2580 {
-
->>>>>>> e019619 ([BOJ] 2580 스도쿠 / G4 / / 백트래킹)
 }

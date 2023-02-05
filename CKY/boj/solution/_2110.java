@@ -1,3 +1,5 @@
+package CKY.boj.solution;
+
 import java.util.*;
 import java.io.*;
 
