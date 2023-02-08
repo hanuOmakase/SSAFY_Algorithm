@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import static java.lang.Math.min;
 
-public class Main_14969 {
+public class Main_14696 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int T = sc.nextInt();
