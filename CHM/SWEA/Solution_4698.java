@@ -7,12 +7,14 @@ import java.util.StringTokenizer;
 
 public class Solution_4698 { // 4698. 테네스의 특별한 소수
 	
-	private static boolean[] isPrimeNum; // 소수 체크
+	private static boolean[] isPrimeNum; // 소수 여부 (false: 소수)
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = null;
 		StringBuilder sb = new StringBuilder();
+		
+		prime(1000000); // 소수 체크 미리 진행
 		
 		int testCase = Integer.parseInt(br.readLine());
 		for (int tc = 1; tc <= testCase; tc++) {
@@ -22,9 +24,7 @@ public class Solution_4698 { // 4698. 테네스의 특별한 소수
 			String D = st.nextToken();
 			int A = Integer.parseInt(st.nextToken());
 			int B = Integer.parseInt(st.nextToken());
-			
-			prime(B);
-			
+
 			int count = 0;
 			// 특별한 소수 = A 이상 B 이하의 소수 중 D를 포함하는 수
 			for (int i = A; i <= B; i++) {
