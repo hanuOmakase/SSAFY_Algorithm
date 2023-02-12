@@ -1,4 +1,3 @@
-package swexpert;
 import java.io.*;
 import java.util.*;
 
