@@ -6,7 +6,7 @@ import java.util.ArrayDeque;
 import java.util.StringTokenizer;
 
 
-public class Main_17406 { // 17406. 배열 돌리기 4
+public class Main_17406 { // 17406. 배열 돌리기 4 
 	
 	private static int[][] origin; // 처음 배열
 	private static int[][] arr; // 바뀐 배열
