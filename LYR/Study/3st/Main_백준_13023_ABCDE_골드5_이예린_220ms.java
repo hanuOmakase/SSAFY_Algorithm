@@ -45,4 +45,4 @@ public class Main_백준_13023_ABCDE_골드5_이예린_220ms {
 			isVisited[nextFriend] = false;
 		}
 	}
-}
+} 
