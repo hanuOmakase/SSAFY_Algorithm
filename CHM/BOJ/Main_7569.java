@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
@@ -59,7 +60,7 @@ import java.util.StringTokenizer;
 다익음
 
  */
-public class Main_토마토 { // 7569. 토마토
+public class Main_7569 { // 7569. 토마토
 	
 	static int M;
 	static int N;
@@ -104,6 +105,11 @@ public class Main_토마토 { // 7569. 토마토
 				find(tomato[0], tomato[1]);
 			
 			}
+			
+//			System.out.println(day + "일차");
+//			for (int i = 0; i < box.length; i++) {
+//				System.out.println(Arrays.toString(box[i]));
+//			}
 		}
 		
 		if (zeroCnt != 0) { // 익지 않은 토마토가 남아있는 경우
@@ -117,15 +123,19 @@ public class Main_토마토 { // 7569. 토마토
 	private static void find(int r, int c) {
 		// 상
 		if (r - 1 >= 0 && box[r - 1][c] == 0) {
-			box[r - 1][c] = 1;
-			zeroCnt--;
-			queue.offer(new Integer[] { r - 1, c });
+			if (r % N != 0) { // 한 층의 가장 위쪽이 아니라면
+				box[r - 1][c] = 1;
+				zeroCnt--;
+				queue.offer(new Integer[] { r - 1, c });				
+			}
 		}
 		// 하
 		if (r + 1 < newN && box[r + 1][c] == 0) {
-			box[r + 1][c] = 1;
-			zeroCnt--;
-			queue.offer(new Integer[] { r + 1, c });
+			if (r % N != N - 1) { // 한 층의 가장 아래쪽이 아니라면
+				box[r + 1][c] = 1;
+				zeroCnt--;
+				queue.offer(new Integer[] { r + 1, c });
+			}
 		}
 		// 좌
 		if (c - 1 >= 0 && box[r][c - 1] == 0) {
