@@ -3,7 +3,7 @@ package CKY.boj.solution;
 import java.io.*;
 import java.util.*;
 
-// *** 시작 도시와 도착 도시를 연결하는 노선은 하나가 아닐 수 있다.
+// **q* 시작 도시와 도착 도시를 연결하는 노선은 하나가 아닐 수 있다.
 // N^3
 public class _11404 {
 	public static void main(String[] args) throws Exception {
@@ -14,7 +14,7 @@ public class _11404 {
 		int line = Integer.parseInt(br.readLine());
 
 		for (int i = 0; i < arr.length; i++) {
-			Arrays.fill(arr[i], 1_000_000);
+			Arrays.fill(arr[i], 1_000_000_000);
 		}
 		for (int i = 0; i < arr.length; i++) {
 			arr[i][i] = 0;
@@ -39,7 +39,7 @@ public class _11404 {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 1; i < size; i++) {
 			for (int j = 1; j < size; j++) {
-				if (arr[i][j] == 1_000_000)
+				if (arr[i][j] == 1_000_000_000)
 					sb.append(0 + " ");
 				else
 					sb.append(arr[i][j] + " ");
